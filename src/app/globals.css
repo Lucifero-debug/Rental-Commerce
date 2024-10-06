@@ -2,26 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*{
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Hide scrollbar for video container */
+/* Add this CSS to your global styles or component styles */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Initially hide the elements */
+.explore-div-left {
+  opacity: 0;
+  transform: translateX(100%); /* or -100% for left */
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.explore-div-right{
+  opacity: 0;
+  transform: translateX(-100%); /* or -100% for left */
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.explore-div-left.animate {
+  animation: slideInLeft 3s ease-out forwards;
+}
+
+.explore-div-right.animate {
+  animation: slideInRight 3s ease-out forwards;
+}
+
+
+.slider > * {
+  flex: 0 0 auto; /* Prevent flex items from shrinking */
+  width: 300px; /* Set a specific width for each video; adjust as necessary */
 }

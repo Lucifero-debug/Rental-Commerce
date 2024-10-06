@@ -11,6 +11,10 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        prag: ['pragmatica-condensed', 'sans-serif'], // Add custom font
+        // You can add more custom fonts here
+      },
     },
   },
   plugins: [],

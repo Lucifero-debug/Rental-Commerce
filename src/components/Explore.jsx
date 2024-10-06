@@ -1,0 +1,47 @@
+'use client'
+import Link from 'next/link'
+import React, { useRef,useEffect } from 'react'
+
+function Explore() {
+
+    const leftDivRef = useRef(null);
+    const rightDivRef = useRef(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Adjust this value to trigger animation earlier/later
+        }
+      );
+  
+      if (leftDivRef.current) observer.observe(leftDivRef.current);
+      if (rightDivRef.current) observer.observe(rightDivRef.current);
+  
+      return () => {
+        if (leftDivRef.current) observer.unobserve(leftDivRef.current);
+        if (rightDivRef.current) observer.unobserve(rightDivRef.current);
+      };
+    }, []);
+
+  return (
+    <>
+      <Link href={'/list?cat=legowns-special'} ref={leftDivRef} className='md:w-[50%] cursor-pointer text-white md:h-full sm:h-[50%] bg-[url("https://www.styleglow.com/wp-content/uploads/2018/04/Printed-Blue-Sherwani-Design-for-Barat-1031x1547.jpg")] bg-cover flex flex-col justify-end items-center sm:pb-20 sm:gap-5 font-prag explore-div-left'>
+    <h1 className='font-normal text-4xl'>NEW MAN</h1>
+    <button className='border-4 border-white bg-transparent w-36 h-14 text-lg'>Explore Now</button>
+  </Link>
+  <Link href={'/list?cat=legowns-special'}  ref={rightDivRef} className='md:w-[50%] cursor-pointer text-white md:h-full sm:h-[50%] bg-[url("https://www.styleglow.com/wp-content/uploads/2020/02/Sapphire-Eid-Unstitiched-dresess.jpg")] bg-cover flex flex-col justify-end items-center sm:pb-20 sm:gap-5 font-prag explore-div-right'>
+  <h1 className='font-normal text-4xl'>Accesories</h1>
+  <button className='border-4 border-white bg-transparent w-36 h-14 text-lg'>Explore Now</button>
+  </Link>
+    </>
+  )
+}
+
+export default Explore
