@@ -24,7 +24,7 @@ const Filter = () => {
 
   return (
     <div className="second flex justify-center h-[10vh] mt-6">
-      <div className="base w-[90%] h-full grid grid-cols-3 sm:flex justify-between items-center gap-5">
+      <div className="base w-[90%] h-full grid grid-cols-1 sm:flex justify-between items-center gap-5">
         <div className="option flex h-6 gap-7">
           <select name="type" className="rounded-lg" onChange={handleFilterChange}>
             <option value="">Type</option>
