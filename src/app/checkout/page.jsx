@@ -95,7 +95,7 @@ const Page = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 gap-8 w-full ">
 
           {/* Shipping Form */}
-          <div className="bg-white p-0 sm:p-6 rounded-lg shadow-md sm:w-full w-[70vw]">
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md sm:w-full w-[75vw]">
             <h3 className="text-2xl font-semibold mb-4">Shipping Details</h3>
             <form>
               <div className="mb-4">
