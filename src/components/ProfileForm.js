@@ -38,7 +38,7 @@ const ProfileForm = ({ profileData }) => {
         
       </div>
       <div className="flex justify-center gap-5 mt-8">
-        <button className='bg-black text-white rounded-lg sm:px-6 sm:py-2' onClick={handleLogout}>LOG OUT</button>
+        <button className='bg-black text-white rounded-lg px-6 py-2' onClick={handleLogout}>LOG OUT</button>
       </div>
     </>
   );
