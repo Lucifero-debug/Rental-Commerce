@@ -25,7 +25,7 @@ async function Page({ searchParams }) {
 const product=productsQuery.items 
 
   return (
-    <div className='sm:mt-60 md:mt-48 lg:mt-36 min-h-[100vh] flex flex-col items-center w-[full] gap-7'>
+    <div className='mt-60 md:mt-48 lg:mt-36 min-h-[100vh] flex flex-col items-center w-[full] gap-7'>
       <h1 className='text-3xl'>COUTURE-{cat?.collection?.name}</h1>
       <Filter/>
       <div className="prod grid grid-cols-3 md:grid md:grid-cols-4 gap-4 md:w-[80vw] w-full">
