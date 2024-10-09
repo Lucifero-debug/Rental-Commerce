@@ -2,11 +2,11 @@
 import axios from 'axios';
 
 // Disable body parsing, as we want to handle it manually
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };
 
 // Handle the upload
 export async function POST(req) {
