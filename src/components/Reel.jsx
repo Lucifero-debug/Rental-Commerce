@@ -52,7 +52,7 @@ function Reel({ product }) {
 
     return (
         <div
-            className='w-full h-screen overflow-y-scroll snap-y snap-mandatory mt-36 sm:mt-40'
+            className='w-full h-screen overflow-y-scroll snap-y snap-mandatory mt-40 sm:mt-40'
             ref={containerRef}
         >
             {product.map((reel, index) => (
