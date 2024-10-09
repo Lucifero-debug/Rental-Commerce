@@ -25,7 +25,7 @@ const CartModal = () => {
         <div className="">Cart is Empty</div>
       ) : (
         <>
-    <div className="w-[60vw] p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white  flex flex-col gap-6">
+    <div className="w-[68vw] sm:w-[60vw] p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white  flex flex-col gap-6">
         
       <h2 className="text-xl">Shopping Cart</h2>
       <div className="flex flex-col gap-8">
@@ -50,7 +50,7 @@ const CartModal = () => {
                       </h3>
                       <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
                        
-                      <div className="text-xs text-green-500">
+                      <div className="text-xs text-green-500 whitespace-nowrap">
                           {order?.quantity} x{" "}
                           </div>
                       

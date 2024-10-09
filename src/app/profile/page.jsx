@@ -43,7 +43,7 @@ const ProfileContent = ({ profileData }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 sm:mt-32">
+    <div className="min-h-screen bg-gray-100 mt-52 sm:mt-52">
       <div className="bg-black p-4">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-white text-2xl font-bold">Your Account</h1>
