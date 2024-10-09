@@ -22,7 +22,7 @@ const Page = async({params}) => {
    
 
   return (
-    <div className="container mx-auto p-6 h-full overflow-y-auto bg-gray-50 md:mt-32">
+    <div className="container mx-auto p-6 h-full overflow-y-auto bg-gray-50 md:mt-32 mt-60">
 
       {/* Main Content */}
     <SingleProduct product={products.items[0]}/>

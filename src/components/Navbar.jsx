@@ -87,7 +87,7 @@ function  Navbar()  {
   }, []);
 
   return (
-    <div className={`fixed left-0 w-full flex-wrap top-0 z-20 pb-5 ${scrolling ? 'bg-black' : 'bg-transparent'} ${scrolling ? 'text-white' : 'text-black'} transition-all duration-500 border-4 border-red-600`} onMouseEnter={()=>setScrolling(true)} onMouseLeave={()=>setScrolling(false)}>
+    <div className={`fixed left-0 w-full flex-wrap top-0 z-20 pb-5 ${scrolling ? 'bg-black' : 'bg-transparent'} ${scrolling ? 'text-white' : 'text-black'} transition-all duration-500 border-4 border-transparent`} onMouseEnter={()=>setScrolling(true)} onMouseLeave={()=>setScrolling(false)}>
 
     <div className="flex flex-col mt-6 gap-6">
       <div className="first flex flex-col md:flex-row justify-around items-center sm:gap-6 md:gap-3">
