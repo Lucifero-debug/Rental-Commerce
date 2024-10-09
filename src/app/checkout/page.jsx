@@ -67,10 +67,10 @@ const Page = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:mt-32">
+    <div className="container mx-auto p-4 mt-56 sm:mt-56">
      
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">Personal Information</h1>
+      <h1 className="text-4xl font-bold mb-4 whitespace-nowrap">Personal Information</h1>
       <form className="bg-white p-6 rounded-lg shadow-md">
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="name">Name</label>
@@ -92,9 +92,10 @@ const Page = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">Checkout</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-8 w-full ">
+
           {/* Shipping Form */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-0 sm:p-6 rounded-lg shadow-md sm:w-full w-[70vw]">
             <h3 className="text-2xl font-semibold mb-4">Shipping Details</h3>
             <form>
               <div className="mb-4">
@@ -130,8 +131,8 @@ const Page = () => {
                   required
                 />
               </div>
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div>
+              <div className="grid grid-cols-3 gap-4 mb-4 w-full">
+                <div className='w-full'>
                   <label className="block text-gray-700">City</label>
                   <input
                     type="text"
@@ -142,7 +143,7 @@ const Page = () => {
                     required
                   />
                 </div>
-                <div>
+                <div className='w-full'>
                   <label className="block text-gray-700">State</label>
                   <input
                     type="text"
@@ -153,7 +154,7 @@ const Page = () => {
                     required
                   />
                 </div>
-                <div>
+                <div className='w-full'>
                   <label className="block text-gray-700">Zip Code</label>
                   <input
                     type="text"

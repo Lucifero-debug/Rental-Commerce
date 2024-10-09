@@ -60,7 +60,6 @@
   }
 }
 
-
 .slider > * {
   flex: 0 0 auto; /* Prevent flex items from shrinking */
   width: 300px; /* Set a specific width for each video; adjust as necessary */
