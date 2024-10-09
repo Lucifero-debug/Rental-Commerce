@@ -165,7 +165,7 @@ const Page = () => {
                     required
                   />
                 </div>
-                <div className="mb-4">
+                <div className="mb-4 w-full">
   <label className="block text-gray-700">Payment Method</label>
   <select
     className="w-full p-2 mt-2 border rounded-md text-gray-500"
