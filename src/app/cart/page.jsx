@@ -20,7 +20,7 @@ const CartModal = () => {
   console.log("cartyr",cart)
 
   return (
-    <div className="sm:w-full sm:h-full sm:mt-40 flex justify-center">
+    <div className="sm:w-full sm:h-full mt-52 sm:mt-52 md:mt-40 flex justify-center">
      {!cart.lineItems ? (
         <div className="">Cart is Empty</div>
       ) : (

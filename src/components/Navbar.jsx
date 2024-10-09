@@ -90,7 +90,7 @@ function  Navbar()  {
     <div className={`fixed left-0 w-full flex-wrap top-0 z-20 pb-5 ${scrolling ? 'bg-black' : 'bg-transparent'} ${scrolling ? 'text-white' : 'text-black'} transition-all duration-500`} onMouseEnter={()=>setScrolling(true)} onMouseLeave={()=>setScrolling(false)}>
 
     <div className="flex flex-col mt-6 gap-6">
-      <div className="first flex flex-col md:flex-row justify-around items-center sm:gap-10 md:gap-3">
+      <div className="first flex flex-col md:flex-row justify-around items-center sm:gap-6 md:gap-3">
         <div className="button w-full md:w-[20vw] flex gap-3 h-[6vh] justify-center md:justify-start">
           <button className="bg-slate-600 text-white w-[40vw] md:w-[9vw] md:h-[5vh]">COUTURE</button>
           <button className="bg-slate-600 text-white w-[40vw] md:w-[9vw] md:h-[5vh]">DIFFUSE</button>
