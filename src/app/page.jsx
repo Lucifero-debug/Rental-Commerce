@@ -11,7 +11,6 @@ async function Home() {
     wixClient.collections.queryCollections().eq("name", 'gown').find()
   ]);
 
-  console.log("sbse mc ",cat.items.length)
 
   if (cat.items.length === 0) {
     return <div>No cat found</div>;
