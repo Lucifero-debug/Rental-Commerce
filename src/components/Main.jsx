@@ -44,7 +44,7 @@ function Main({cat,product}) {
         </div>
         <div className='big w-full sm:h-[50vh] md:h-[83vh] sm:flex sm:flex-row sm:items-center mt-16 sm:mt-10 flex flex-col sm:gap-20 xl:gap-0 gap-7'>
           <div className='h-full w-[34%] sm:w-[23%] flex justify-center items-center'>
-            <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap'>Experience More</h1>
+            <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
           </div>
           <div className='slider h-full sm:w-[77%] sm:flex grid grid-cols-2 sm:overflow-x-auto sm:overflow-y-hidden gap-10 '>
             {cat.items.map((item) => (
