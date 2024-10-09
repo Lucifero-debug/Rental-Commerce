@@ -51,6 +51,15 @@
   animation: slideInRight 3s ease-out forwards;
 }
 
+@media (max-width: 640px) { /* Adjust this based on your requirements */
+  .explore-div-left,
+  .explore-div-right {
+    animation: none; /* Disable animations on small screens */
+    opacity: 1; /* Ensure they are visible */
+    transform: translateX(0); /* Set to initial state */
+  }
+}
+
 
 .slider > * {
   flex: 0 0 auto; /* Prevent flex items from shrinking */

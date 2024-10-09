@@ -1,6 +1,6 @@
 "use client"; // Ensure this component runs on the client side
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState,useCallback,useEffect } from 'react';
 
 function Carousel() {
   const images = [
@@ -15,17 +15,17 @@ function Carousel() {
       height: 700, // Adjusted height according to the aspect ratio
     },
     {
-      src: 'https://cdn.pixelbin.io/v2/black-bread-289bfa/81ub5U/t.resize(w:2000)/manish-banner/1721819429kashmir_banner_desktop_final.webp',
+      src: 'https://images.pexels.com/photos/25288421/pexels-photo-25288421/free-photo-of-model-in-blue-dress-with-black-scarf-on-her-shoulder.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1650',
       width: 2000,
       height: 700, // Adjusted height according to the aspect ratio
     },
     {
-      src:'https://images.pexels.com/photos/12430012/pexels-photo-12430012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      src:'https://images.pexels.com/photos/25913159/pexels-photo-25913159/free-photo-of-elegant-man-wearing-flat-cap.jpeg?auto=compress&cs=tinysrgb&w=1260',
       width: 2000,
       height: 700, // Adjusted height according to the aspect ratio
     },
     {
-      src: 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      src: 'https://images.pexels.com/photos/27065133/pexels-photo-27065133/free-photo-of-a-bearded-man-posing-in-a-patterned-shirt-and-a-hat.jpeg?auto=compress&cs=tinysrgb&w=1260',
       width: 2000,
       height: 700, // Adjusted height according to the aspect ratio
     },
@@ -38,15 +38,25 @@ function Carousel() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleNext = () => {
+ 
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  }, [images.length]);
+
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext(); // Automatically change images
+    }, 5000); // Change every 3 seconds
+
+    return () => clearInterval(interval); // Clean up on component unmount
+  }, [handleNext]);
 
   return (
     <div className="relative w-full mx-auto  top-0">

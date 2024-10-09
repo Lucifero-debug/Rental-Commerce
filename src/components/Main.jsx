@@ -52,7 +52,7 @@ function Main({cat,product}) {
             ))}
           </div>
         </div>
-        <div className="auto w-full md:h-[78vh] mt-7">
+        <div className="auto w-full sm:h-[40vh] xl:h-[78vh] mt-7">
           <div className="w-full h-full flex flex-col gap-9">
             <h1 className="text-2xl text-center">IN MM</h1>
             <Auto auto={product} />
