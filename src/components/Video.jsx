@@ -17,7 +17,7 @@ const selectedProduct=product[getRandomInt(0,(product.length)-1)]
 const video=selectedProduct?.media?.items.find(media=>media.mediaType=='video') 
 
   return (
-    <div className='flex justify-center items-center w-[60vw] h-full '>
+    <div className='flex justify-center items-center sm:w-[24vw] h-full '>
    {video?( <Link href={`/scroll?cat=${item.name}`} >
        <video src={video?.video?.files[1]?.url} autoPlay loop muted className=' w-full h-[66vh] object-cover cursor-pointer'/>
        <h1 className='font-semibold'>{selectedProduct.name}</h1>

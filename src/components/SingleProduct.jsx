@@ -8,6 +8,8 @@ import SizeChart from './SizeChart';
 import { useWixClient } from '@/hooks/useWixClient';
 import { useCartStore } from '@/hooks/useCartStore';
 import { usePathname, useSearchParams } from 'next/navigation';
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 function SingleProduct({product}) {
   
@@ -23,7 +25,9 @@ function SingleProduct({product}) {
     const [selectedTab, setSelectedTab] = useState('women');
     const [color,setColor]=useState('')
     const { addItem, isLoading } = useCartStore();
+    const [seller,setSeller]=useState()
 
+    const router = useRouter();
     const saveProductToLocalStorage = (product) => {
       const existingProducts = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
   
@@ -39,6 +43,14 @@ function SingleProduct({product}) {
         localStorage.setItem('recentlyViewed', JSON.stringify(existingProducts));
       }
     };
+
+    useEffect(() => {
+      const userCookie = Cookies.get("user");
+      if(userCookie){
+        const user = JSON?.parse(userCookie);
+        setSeller(user)
+      }
+    }, []);
   
     useEffect(() => {
       if (typeof window !== 'undefined') {
@@ -104,21 +116,22 @@ function SingleProduct({product}) {
         setCurrentIndex(variantIndex+1); // Update carousel to match variant
       };
       const addToCart = async () => {
-        if (!selectedVariant) {
-            console.error("No variant selected!");
-            return; // Exit if no variant is selected
-        }
-        const productId=product._id
-        const variantId=selectedVariant._id
+       if(seller==null){
+       router.push('/login')
+       }else{
+         if (!selectedVariant) {
+             console.error("No variant selected!");
+             return; // Exit if no variant is selected
+         }
+         const productId=product._id
+         const variantId=selectedVariant._id
+  
+         addItem(wixClient, productId, variantId, quantity)
+       }
 
-        addItem(wixClient, productId, variantId, quantity)
     };
       
-      useEffect(() => {
-        console.log("Selected Color updated:", color);
-        console.log("Selected size updated:", selectedSize);
-        console.log("Selected variant",selectedVariant)
-        
+      useEffect(() => {  
         updateSelectedVariant()
       }, [color,selectedSize,selectedColorIndex,selectedVariant,updateSelectedVariant]);
 

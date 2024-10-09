@@ -64,6 +64,14 @@ function  Navbar()  {
     router.push(`/list?cat=${name}`);
   };
 
+  const handleCart=()=>{
+    if (seller==null) {
+      router.push('/login')
+    }else{
+      router.push('/cart')
+    }
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -114,7 +122,7 @@ function  Navbar()  {
             <div className={`cursor-pointer ${isProfileDisabled ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleSearch} disabled={isProfileDisabled}>
                 <Person3OutlinedIcon />
               </div>
-            <div className="relative cursor-pointer" onClick={()=>router.push('/cart')}>
+            <div className="relative cursor-pointer" onClick={handleCart}>
   <ShoppingCartIcon />
   <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#F35C7A] rounded-full text-black text-sm flex items-center justify-center">
     {counter}

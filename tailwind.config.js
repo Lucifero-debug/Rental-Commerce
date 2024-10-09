@@ -16,6 +16,7 @@ module.exports = {
         // You can add more custom fonts here
       },
     },
+   
   },
   plugins: [],
 };

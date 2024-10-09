@@ -76,7 +76,7 @@ const handleAddProductSuccess = () => {
 };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 sm:mt-16">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 mt-24 sm:mt-40">
       {/* Seller Header */}
       <div className="container mx-auto bg-white p-10 rounded-xl shadow-2xl max-w-7xl">
         <h1 className="text-5xl font-extrabold text-center mb-4 text-gray-900 tracking-wide">
