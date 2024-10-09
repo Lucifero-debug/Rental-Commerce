@@ -59,8 +59,6 @@ const Filter = () => {
             <option value="red">Red</option>
             <option value="blue">Blue</option>
           </select>
-        </div>
-
         <div className="sort w-[16vw]">
           <select
             name="sort"
@@ -74,6 +72,8 @@ const Filter = () => {
             <option value="desc lastUpdated">Oldest</option>
           </select>
         </div>
+        </div>
+
       </div>
     </div>
   );
