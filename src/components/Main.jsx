@@ -4,32 +4,14 @@ import Carousel from './Carousel';
 import Curated from './Curated';
 import Auto from './Auto';
 import Image from 'next/image';
-import { wixClientServer } from "@/lib/wixClientServer";
 import Head from 'next/head';
 
 // Dynamically import Video and Explore components
 const Video = dynamic(() => import('@/components/Video'), { ssr: false });
 const Explore = dynamic(() => import('@/components/Explore'), { ssr: false });
 
-async function Main() {
-  const wixClient = await wixClientServer();
-
-  const [cat, collectionsQuery] = await Promise.all([
-    wixClient.collections.queryCollections().find(),
-    wixClient.collections.queryCollections().eq("name", 'gown').find()
-  ]);
-
-  if (collectionsQuery.items.length === 0) {
-    return <div>No collection found</div>;
-  }
-
-  const collectionId = collectionsQuery.items[0]._id;
-  const productsQuery = await wixClient.products.queryProducts()
-    .eq("collectionIds", collectionId)
-    .limit(4)
-    .find();
-
-  const product = productsQuery.items;
+function Main({cat,product}) {
+  
 
   return (
     <>
