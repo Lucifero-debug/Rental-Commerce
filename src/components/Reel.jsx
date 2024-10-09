@@ -52,12 +52,12 @@ function Reel({ product }) {
 
     return (
         <div
-            className='w-full h-screen overflow-y-scroll snap-y snap-mandatory sm:mt-40'
+            className='w-full h-screen overflow-y-scroll snap-y snap-mandatory mt-36 sm:mt-40'
             ref={containerRef}
         >
             {product.map((reel, index) => (
                 <div
-                    className={`w-[50%] h-screen flex flex-col justify-center items-center snap-start mx-auto ${index === currentProduct ? 'active' : ''}`}
+                    className={`w-full sm:w-[50%] h-screen flex flex-col justify-center items-center snap-start mx-auto ${index === currentProduct ? 'active' : ''}`}
                     key={reel.slug}
                 >
                     <video
@@ -67,7 +67,7 @@ function Reel({ product }) {
                         muted
                         className='w-full h-full object-cover'
                     />
-                    <div className='w-full flex justify-center px-4 sm:absolute sm:bottom-7 md:gap-72 sm:gap-0'>
+                    <div className='w-full flex justify-center px-4 absolute sm:absolute bottom-7 sm:bottom-7 md:gap-72 sm:gap-0'>
                         <button
                             className="bg-black hover:bg-blue-600 text-white py-2 px-4 rounded-md"
                             onClick={handleBuyNow}
