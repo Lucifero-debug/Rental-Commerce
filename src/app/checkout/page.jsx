@@ -84,9 +84,7 @@ const Page = () => {
           <label className="block text-gray-700 mb-2" htmlFor="address">Mobile Number</label>
           <input className="border border-gray-300 p-2 rounded-lg w-full" type="text" id="address" placeholder="Your Mobile Number" required />
         </div>
-        {/* <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300" type="submit">
-          Complete Purchase
-        </button> */}
+     
       </form>
     <div className="bg-gray-100 py-10 w-full">
       <div className="container mx-auto px-4">
@@ -165,7 +163,7 @@ const Page = () => {
                     required
                   />
                 </div>
-                <div className="mb-4 w-full">
+                <div className="mb-4 w-[50vw] sm:w-full">
   <label className="block text-gray-700">Payment Method</label>
   <select
     className="w-full p-2 mt-2 border rounded-md text-gray-500"
