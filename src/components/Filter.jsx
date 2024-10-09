@@ -59,7 +59,7 @@ const Filter = () => {
             <option value="red">Red</option>
             <option value="blue">Blue</option>
           </select>
-        <div className="sort w-[16vw]">
+        <div className="sort w-[33vw] sm:w-[16vw]">
           <select
             name="sort"
             className="rounded-lg w-[11vw] h-9"
