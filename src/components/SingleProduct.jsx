@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useState, useEffect} from 'react';
 import { useRef } from 'react';
 import StraightenIcon from '@mui/icons-material/Straighten';
@@ -78,17 +78,18 @@ function SingleProduct({product}) {
 
 
     
-    const updateSelectedVariant = () => {
-        // Check if selectedColor and selectedSize exist, then find the corresponding variant
-        if (color && selectedSize) {
-            const variant = product.variants.find(variant => 
-                variant?.choices?.Color === color && variant?.choices?.Size === selectedSize
-            );
-            setSelectedVariant(variant || product.variants[0]); // Fallback to first variant if none found
-        } else {
-            setSelectedVariant(product.variants[0]); // Default to first variant if nothing is selected
-        }
-    };
+  const updateSelectedVariant = useCallback(() => {
+    if (!product || !product.variants) {
+        return; // Exit if product data is not available
+    }
+
+    const variant = product.variants.find(variant => 
+        variant?.choices?.Color === color && variant?.choices?.Size === selectedSize
+    );
+
+    setSelectedVariant(variant || product.variants[0]); // Fallback to first variant if none found
+}, [product, color, selectedSize]);
+
 
       const toggleSection = (index) => {
         setExpandedSections((prevState) => ({

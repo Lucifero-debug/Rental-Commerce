@@ -1,7 +1,7 @@
 'use client'
 import Form from '@/components/Form';
 import Image from 'next/image';
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useCallback} from 'react';
 import { FaBoxOpen, FaDollarSign, FaTrashAlt, FaEdit, FaInfoCircle } from 'react-icons/fa';
 import Cookies from "js-cookie";
 
@@ -18,35 +18,34 @@ const [shouldFetchProducts, setShouldFetchProducts] = useState(false);
     }
   }, []);
 
-const fetchProduct=async()=>{
-
-  const brand=seller?.profile?.nickname
-  try {
-    const response = await fetch('/api/products', {
+  const fetchProduct = useCallback(async () => {
+    const brand = seller?.profile?.nickname;
+    try {
+      const response = await fetch('/api/products', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ brand }),
-    });
+      });
 
-    if (!response.ok) {
+      if (!response.ok) {
         throw new Error('Network response was not ok');
-    }
+      }
 
-    const data = await response.json();
-    setProduct(data._items)
-    console.log("Product fetched successfully:", product);
-} catch (error) {
-    console.error("Error fetching product:", error.message);
-}
-}
+      const data = await response.json();
+      setProduct(data._items);
+      console.log("Product fetched successfully:", data._items);
+    } catch (error) {
+      console.error("Error fetching product:", error.message);
+    }
+  }, [seller]);
 useEffect(() => {
   if (seller?.profile?.nickname) {
     fetchProduct();
     setShouldFetchProducts(false); 
   }
-}, [seller,shouldFetchProducts]);
+}, [seller,shouldFetchProducts,fetchProduct]);
 
 const handleDelete=async(id)=>{
  const productId=id

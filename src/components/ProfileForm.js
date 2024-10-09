@@ -29,11 +29,11 @@ const ProfileForm = ({ profileData }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-gray-600 mb-2">Full Name</label>
-          <p className="text-lg">{profileData?.member?.profile?.nickname}</p>
+          <p className="text-lg">{profileData?.profile?.nickname}</p>
         </div>
         <div>
           <label className="block text-gray-600 mb-2">Email</label>
-          <p className="text-lg">{profileData?.member?.loginEmail}</p>
+          <p className="text-lg">{profileData?.loginEmail}</p>
         </div>
         
       </div>

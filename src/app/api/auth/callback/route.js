@@ -1,10 +1,9 @@
-// src/app/api/auth/callback/route.js
 import axios from 'axios';
+import qs from 'qs';
 
 export async function GET(req) {
-  // Extract the authorization code from the query parameters
   const { searchParams } = new URL(req.url);
-  const code = searchParams.get('code'); // Get the authorization code
+  const code = searchParams.get('code');
 
   if (!code) {
     return new Response(JSON.stringify({ error: 'Authorization code not found' }), {
@@ -13,27 +12,23 @@ export async function GET(req) {
   }
 
   try {
-    // Prepare the request to exchange the authorization code for tokens
-    const tokenResponse = await axios.post('https://www.wixapis.com/oauth/access', null, {
-      params: {
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: 'http://localhost:3000/auth/callback', // Your redirect URI
-        client_id: process.env.NEXT_PUBLIC_WIX_CLIENT_ID, // Your client ID
-        client_secret: process.env.NEXT_PUBLIC_WIX_API_ID, // Your client secret
-      },
+    const tokenResponse = await axios.post('https://www.wixapis.com/oauth/access', qs.stringify({
+      grant_type: 'authorization_code',
+      code,
+      redirect_uri: 'http://localhost:3000/auth/callback',
+      client_id: process.env.WIX_CLIENT_ID, // Use a non-public client ID
+      client_secret: process.env.WIX_API_ID, // Use a non-public client secret
+    }), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     });
 
-    // You should receive the access token and refresh token here
     const { access_token, refresh_token } = tokenResponse.data;
-    console.log("rajveer",access_token)
-    console.log("balveer",refresh_token)
- 
-    // Store tokens securely (e.g., in a database or session)
-    // For demonstration purposes, we will just return them in the response
+    
+    // Store tokens securely here
+
+    // Redirect to a success page (optional)
     return new Response(JSON.stringify({
       access_token,
       refresh_token,
@@ -41,7 +36,7 @@ export async function GET(req) {
       status: 200,
     });
   } catch (error) {
-    console.error('Error exchanging authorization code for tokens:', error);
+    console.error('Error exchanging authorization code for tokens:', error.response?.data || error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       status: error.response?.status || 500,
     });
