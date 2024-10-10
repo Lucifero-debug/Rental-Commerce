@@ -19,7 +19,7 @@ function Card({ product }) {
         className="w-full h-auto object-cover" // Ensure the image covers its container without stretching
       />
       <p className='text-gray-300 text-center font-medium'>COUTURE</p>
-      <h1 className='font-bold text-lg overflow-hidden text-ellipsis whitespace-nowrap'>{product.name}</h1>
+      <h1 className='font-bold text-lg overflow-hidden text-ellipsis'>{product.name}</h1>
       <p className='text-[#79583a] text-center font-bold'>INR {product.price.price}</p>
     </Link>
   )

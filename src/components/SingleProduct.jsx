@@ -77,7 +77,6 @@ function SingleProduct({product}) {
       }
     };
     const pathname = usePathname();;
-    console.log("searchParams",pathname)
 
     const handleShareToWhatsApp = () => {
       if (product) {
@@ -88,7 +87,7 @@ function SingleProduct({product}) {
       }
   };
 
-
+console.log("sumit lodu",product.media.items)
     
   const updateSelectedVariant = useCallback(() => {
     if (!product || !product.variants) {
@@ -127,6 +126,7 @@ function SingleProduct({product}) {
          const variantId=selectedVariant._id
   
          addItem(wixClient, productId, variantId, quantity)
+         console.log("product added successfully")
        }
 
     };
@@ -153,17 +153,18 @@ function SingleProduct({product}) {
           
            // Adjust based on the height of images
         >
-          {product?.media?.items?.map((variant, index) => (
-            <Image
-              key={index}
-              src={variant?.image?.url}
-              alt={`Slide ${index + 1}`}
-              className="w-full  object-contain rounded-lg"
-              width={200}
-              height={270}
-              
-            />
-          ))}
+          {product?.media?.items
+  ?.filter((variant) => variant.mediaType === 'image') // Only include items with mediaType 'image'
+  ?.map((variant, index) => (
+    <Image
+      key={index}
+      src={variant?.image?.url}
+      alt={`Slide ${index + 1}`}
+      className="w-full object-contain rounded-lg"
+      width={200}
+      height={270}
+    />
+  ))}
         </div>
 
       </div>
@@ -175,7 +176,7 @@ function SingleProduct({product}) {
         <p className="text-gray-600 mb-8">{product?.description}</p>
 
 
-         <div className='flex justify-between'>
+         <div className='flex justify-between gap-6'>
         {/* Variant Selection */}
         <div className="my-4">
           <label className="block text-sm font-medium text-gray-700">Select Color:</label>
