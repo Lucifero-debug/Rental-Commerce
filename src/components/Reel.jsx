@@ -67,7 +67,7 @@ function Reel({ product }) {
                         muted
                         className='w-full h-full object-cover'
                     />
-                    <div className='w-full flex justify-center px-4 absolute sm:absolute bottom-7 sm:bottom-7 md:gap-72 sm:gap-0'>
+                    <div className='w-full flex justify-center px-4 absolute sm:absolute bottom-4 gap-3 sm:bottom-7 md:gap-72 sm:gap-0'>
                         <button
                             className="bg-black hover:bg-blue-600 text-white py-2 px-4 rounded-md"
                             onClick={handleBuyNow}
