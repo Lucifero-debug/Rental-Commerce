@@ -72,6 +72,7 @@ function  Navbar()  {
       router.push('/cart')
     }
   }
+  console.log("counter",counter)
 
   useEffect(() => {
     const handleScroll = () => {

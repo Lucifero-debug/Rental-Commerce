@@ -16,6 +16,7 @@ const ProfileForm = ({ profileData }) => {
     try {
       // Log the user out via Wix and redirect to login
       const { logoutUrl } = await wixClient.auth.logout(window.location.href);
+      localStorage.removeItem('cartCounter');
       router.push('/login');
     } catch (error) {
       console.error("Error during logout:", error);
