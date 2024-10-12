@@ -22,12 +22,12 @@ function Recent() {
         <div className="mt-10">
             <h2 className="text-2xl font-semibold text-gray-800">Recently Viewed</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-                {recentlyViewedProducts.map((product, index) => (
+                {recentlyViewedProducts.slice(0, 4).map((product, index) => (
                     <div key={index} className="bg-white rounded-lg shadow-lg p-4">
                         <Image
                             src={product.media.mainMedia.image.url}
                             alt={product.name}
-                            className=" object-cover rounded-t-lg" // Image dimensions
+                            className=" object-cover rounded-t-lg w-full h-auto md:h-[200px]" // Image dimensions
                             width={200}
                             height={200}
                         />

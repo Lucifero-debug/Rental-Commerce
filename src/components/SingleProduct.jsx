@@ -61,7 +61,7 @@ function SingleProduct({product}) {
     const handleScroll = () => {
       const carouselElement = carouselRef.current;
       const scrollTop = carouselElement.scrollTop;
-      const itemHeight =  63;// Adjust this height based on your image height
+      const itemHeight =  213;// Adjust this height based on your image height
   
       // Calculate the index based on the scroll position and the image height
       const newIndex = Math.floor(scrollTop / itemHeight);
@@ -142,28 +142,29 @@ console.log("sumit lodu",product.media.items)
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
     {/* static image */}
-    <div className='w-full md:h-[600px] flex items-center justify-center'>
+    <div className='w-full md:h-[600px] md:flex items-center justify-center hidden'>
 <Image src={product?.media?.items[currentIndex]?.image?.url} alt='' width={270} height={370}/>
     </div>
       {/* Vertical Image Carousel */}
-      <div className="relative w-full md:h-[700px] overflow-y-scroll rounded-lg shadow-lg" onScroll={handleScroll}
+      <div className="relative w-full h-[300px] md:h-[700px] overflow-x-scroll overflow-y-hidden md:overflow-y-scroll md:overflow-x-hidden rounded-lg shadow-lg" onScroll={handleScroll}
           ref={carouselRef}>
         <div
-          className="h-full flex flex-col gap-5"
+          className="flex md:flex-col flex-row gap-5  w-full"
           
            // Adjust based on the height of images
         >
           {product?.media?.items
   ?.filter((variant) => variant.mediaType === 'image') // Only include items with mediaType 'image'
   ?.map((variant, index) => (
+    <div  key={index} className='w-screen md:w-full h-[300px] md:h-[350px] relative flex-shrink-0'>
     <Image
       key={index}
       src={variant?.image?.url}
       alt={`Slide ${index + 1}`}
-      className="w-full object-contain rounded-lg"
-      width={200}
-      height={270}
+      className="w-full object-cover rounded-lg h-full"
+      layout='fill'
     />
+    </div>
   ))}
         </div>
 

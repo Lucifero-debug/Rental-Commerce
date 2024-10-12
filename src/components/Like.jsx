@@ -52,7 +52,7 @@ async function Like({liked}) {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
       {productsQuery.items.map((suggestion, index) => (
         <div key={index} className="bg-white rounded-lg shadow-lg p-4">
-          <Image src={suggestion.media.mainMedia.image.url} alt={suggestion.name} className=" object-cover rounded-t-lg" width={200} height={200}   // Use fill to make it responsive
+          <Image src={suggestion.media.mainMedia.image.url} alt={suggestion.name} className=" object-cover rounded-t-lg w-full h-auto md:h-[200px]" width={200} height={200}   // Use fill to make it responsive
                 objectFit="cover" />
           <h3 className="text-lg font-semibold text-gray-800 mt-2">{suggestion.name}</h3>
           <p className="text-blue-500 font-semibold">&#8377;{suggestion.price.price}</p>
