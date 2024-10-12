@@ -22,8 +22,8 @@ function Auto({ auto }) {
           alt={item.name} // Optional: Use the product name for better accessibility
           src={item.media.mainMedia.image.url} // Adjust this path based on your product structure
           className={`w-[34vw] sm:w-[24vw] cursor-pointer transition-transform duration-700 ease-in-out shadow-[20px_10px_30px_rgba(121,90,58,1)] ${activeIndex === index ? 'scale-125 sm:scale-110 translate-x-4' : 'scale-50 sm:scale-75'}`}
-          width={300}
-          height={300}
+          width={270}
+          height={270}
         />
         </Link>
       ))}

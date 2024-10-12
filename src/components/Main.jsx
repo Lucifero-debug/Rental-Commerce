@@ -46,7 +46,7 @@ function Main({cat,product}) {
           <div className='h-[30vh] sm:h-full w-[67%] sm:w-[23%] flex justify-center items-center'>
             <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
           </div>
-          <div className='slider h-full md:h-[74vh] sm:w-[77%] w-full flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10 border-4 border-yellow-600'>        
+          <div className='slider h-full md:h-[74vh] sm:w-[77%] w-full flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10'>        
              {cat.items.map((item) => (
               <Video key={item._id} item={item} />
             ))}
@@ -58,7 +58,7 @@ function Main({cat,product}) {
             <Auto auto={product} />
           </div>
         </div>
-        <div className="vid w-[full] h-[40vh]  sm:h-[85vh] md:mt-8 mt-14 md:flex md:flex-row flex flex-row">
+        <div className="vid w-[full] h-[40vh]  sm:h-[85vh] md:mt-8 mt-4 md:flex md:flex-row flex flex-row">
           <Explore />
         </div>
         <div className="vid w-[full] h-[100vh] md:mt-14 sm:mt-16">
