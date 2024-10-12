@@ -7,6 +7,24 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { members } from "@wix/members";
 
+const getDeviceIdentifier = () => {
+  return navigator.userAgent; // You can also use a custom logic here
+};
+
+const clearCookiesAndLogout = () => {
+  // Clear all cookies
+  document.cookie.split(";").forEach(function (c) { 
+    document.cookie = c.trim().split("=")[0] + "=;expires=" + new Date(0).toUTCString() + ";path=/"; 
+  });
+  
+  // Clear local storage
+  localStorage.clear();
+
+  // Redirect to login page (or show login modal)
+  window.location.href = "/login"; // Adjust as per your route
+};
+
+
 export default function Login() {
   const MODE = {
     LOGIN: "login",
@@ -44,6 +62,17 @@ export default function Login() {
       : mode === MODE.RESET_PASSWORD
       ? "Reset"
       : "Verify";
+
+      useEffect(() => {
+        const currentDeviceId = getDeviceIdentifier();
+        const storedDeviceId = localStorage.getItem("deviceId");
+    
+        if (storedDeviceId && storedDeviceId !== currentDeviceId) {
+          // Device has changed; clear cookies and log out
+          clearCookiesAndLogout();
+        }
+      }, []);
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,7 +132,7 @@ export default function Login() {
             secure: true, // use 'secure' flag for HTTPS
             path: "/", // cookie valid for the whole domain
           });
-
+          localStorage.setItem("deviceId", getDeviceIdentifier());
           router.push("/");
           break;
         case LoginState.FAILURE:
