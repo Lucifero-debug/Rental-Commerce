@@ -42,11 +42,11 @@ function Main({cat,product}) {
             priority // Add priority to important images
           />
         </div>
-        <div className='big w-full h-[50vh] md:h-[83vh] sm:flex sm:flex-row sm:items-center mt-16 sm:mt-10 gap-10 sm:gap-20 xl:gap-0 flex flex-col'>
-          <div className='h-full w-[34%] sm:w-[23%] flex justify-center items-center'>
+        <div className='big w-full h-[50vh] md:h-[83vh] sm:flex sm:flex-row sm:items-center mt-4 sm:mt-10 gap-2 sm:gap-20 xl:gap-0 flex flex-col'>
+          <div className='h-[30vh] sm:h-full w-[67%] sm:w-[23%] flex justify-center items-center'>
             <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
           </div>
-          <div className='slider h-full w-[77%] flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10'>        
+          <div className='slider h-full md:h-[74vh] sm:w-[77%] w-full flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10 border-4 border-yellow-600'>        
              {cat.items.map((item) => (
               <Video key={item._id} item={item} />
             ))}
