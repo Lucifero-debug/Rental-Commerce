@@ -80,7 +80,7 @@ function SingleProduct({product}) {
 
     const handleShareToWhatsApp = () => {
       if (product) {
-          const message = `Check out this product: ${product.name}!\nlocalhost:3000/${pathname}`;
+          const message = `Check out this product: ${product.name}!\n${window.location.origin}/${pathname}`;
           const encodedMessage = encodeURIComponent(message);
           const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
           window.open(whatsappUrl, '_blank');
