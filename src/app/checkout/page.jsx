@@ -135,7 +135,7 @@ const Page = () => {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
         amount: cart.subtotal.amount * 100, 
         currency: 'INR',
-        name: 'Your Store Name',
+        name: 'Legowns',
         description: 'Purchase Description',
         order_id: orderId,
         handler: function (response) {
