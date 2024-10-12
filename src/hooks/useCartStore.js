@@ -5,7 +5,7 @@ import { WixClient } from "@/context/wixContext";
 export const useCartStore = create((set) => ({
   cart: [],
   isLoading: true,
-  counter: parseInt(localStorage.getItem('cartCounter')) || 0, // Initialize counter from local storage
+  counter:typeof window !== 'undefined'? parseInt(localStorage.getItem('cartCounter')) :0, // Initialize counter from local storage
   getCart: async (wixClient) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
@@ -14,7 +14,9 @@ export const useCartStore = create((set) => ({
         isLoading: false,
         counter: cart?.lineItems.length || 0,
       });
-      localStorage.setItem('cartCounter', cart?.lineItems.length || 0); // Update local storage
+      if (typeof window !== 'undefined') { // Check if in the browser
+        localStorage.setItem('cartCounter', cart?.lineItems.length || 0); // Update local storage
+      }// Update local storage
     } catch (err) {
       set((prev) => ({ ...prev, isLoading: false }));
     }
@@ -42,7 +44,9 @@ export const useCartStore = create((set) => ({
       isLoading: false,
     });
 
-    localStorage.setItem('cartCounter', newCounter); // Update local storage
+    if (typeof window !== 'undefined') { // Check if in the browser
+      localStorage.setItem('cartCounter', newCounter); // Update local storage
+    }
   },
   removeItem: async (wixClient, itemId) => {
     set((state) => ({ ...state, isLoading: true }));
@@ -58,6 +62,8 @@ export const useCartStore = create((set) => ({
       isLoading: false,
     });
 
-    localStorage.setItem('cartCounter', newCounter); // Update local storage
+    if (typeof window !== 'undefined') { // Check if in the browser
+      localStorage.setItem('cartCounter', newCounter); // Update local storage
+    }
   },
 }));
