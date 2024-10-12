@@ -42,23 +42,23 @@ function Main({cat,product}) {
             priority // Add priority to important images
           />
         </div>
-        <div className='big w-full sm:h-[50vh] md:h-[83vh] sm:flex sm:flex-row sm:items-center mt-16 sm:mt-10 flex flex-col sm:gap-20 xl:gap-0 gap-7'>
+        <div className='big w-full h-[50vh] md:h-[83vh] flex flex-row sm:items-center mt-16 sm:mt-10 gap-20 xl:gap-0 '>
           <div className='h-full w-[34%] sm:w-[23%] flex justify-center items-center'>
-            <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
+            <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-normal'>Experience More</h1>
           </div>
-          <div className='slider h-full sm:w-[77%] sm:flex grid grid-cols-2 sm:overflow-x-auto sm:overflow-y-hidden gap-10'>        
+          <div className='slider h-full w-[77%] flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10'>        
              {cat.items.map((item) => (
               <Video key={item._id} item={item} />
             ))}
           </div>
         </div>
-        <div className="auto w-full sm:h-[40vh] xl:h-[78vh] mt-7">
+        <div className="auto w-full h-[30vh] sm:h-[40vh] xl:h-[78vh] mt-7">
           <div className="w-full h-full flex flex-col gap-9">
             <h1 className="text-2xl text-center">IN MM</h1>
             <Auto auto={product} />
           </div>
         </div>
-        <div className="vid w-[full] h-[85vh] md:mt-8 mt-14 md:flex md:flex-row flex flex-col ">
+        <div className="vid w-[full] h-[40vh]  sm:h-[85vh] md:mt-8 mt-14 md:flex md:flex-row flex flex-row">
           <Explore />
         </div>
         <div className="vid w-[full] h-[100vh] md:mt-14 sm:mt-16">

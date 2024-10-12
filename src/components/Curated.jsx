@@ -36,13 +36,21 @@ function Curated({cat}) {
 
   return (
     <>
-    <div className="second grid grid-cols-2 md:flex w-full h-full  gap-2">
-     {cat.map((slides)=>(
- <Link href={`/list?cat=${slides.slug}`} key={slides._id} className="img md:w-[25vw] md:h-full h-full cursor-pointer flex items-end justify-center bg-cover" onClick={handleSearch}  style={{ backgroundImage: `url(${slides.media.mainMedia.image.url})`}}>
-<h1 className='z-10 text-black text-xl font-bold'>{slides.name}</h1>
-    </Link>
-     ))}
-    </div>
+  <div className="second grid grid-cols-2 md:flex w-full h-full gap-2">
+        {cat
+          .filter(slides => slides.name !== 'Lehnga' && slides.name !=='saree') // Exclude 'lehnga saree' from the mapping
+          .map((slides) => (
+            <Link
+              href={`/list?cat=${slides.slug}`}
+              key={slides._id}
+              className="img md:w-[25vw] md:h-full h-full cursor-pointer flex items-end justify-center bg-cover"
+              onClick={handleSearch}
+              style={{ backgroundImage: `url(${slides.media.mainMedia.image.url})` }}
+            >
+              <h1 className='z-10 text-black text-xl font-bold'>{slides.name}</h1>
+            </Link>
+          ))}
+      </div>
   
     </>
     

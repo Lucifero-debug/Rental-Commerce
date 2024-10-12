@@ -18,7 +18,7 @@ import Cookies from "js-cookie";
 function  Navbar()  {
   const [hoveredBrand, setHoveredBrand] = useState(null);
   const [scrolling, setScrolling] = useState(false);
-  const [seller,setSeller]=useState()
+  const [sellers,setSellers]=useState()
   const {  counter } = useCartStore();
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -26,9 +26,11 @@ function  Navbar()  {
     const userCookie = Cookies.get("user");
     if(userCookie){
       const user = JSON?.parse(userCookie);
-      setSeller(user)
+      setSellers(user)
     }
   }, []);
+//   const { seller } = useAuth();
+// console.log("suneo slelr",seller)
   
   const handleMouseEnter = (brand) => {
     setHoveredBrand(brand);
@@ -50,22 +52,21 @@ function  Navbar()  {
   const router = useRouter();
   
   const handleSearch=(e)=>{
-    console.log("seller",seller)
-    if(seller==null){
+    if(sellers==null){
       router.push('/login')
     }else{
     router.push('/profile')
     }
     }
   
-    const isProfileDisabled = seller == null;
+    const isProfileDisabled = sellers == null;
 
     const navigateToList = (name) => {
     router.push(`/list?cat=${name}`);
   };
 
   const handleCart=()=>{
-    if (seller==null) {
+    if (sellers==null) {
       router.push('/login')
     }else{
       router.push('/cart')

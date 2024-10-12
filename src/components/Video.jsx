@@ -20,9 +20,9 @@ async function Video({ item }) {
     if (!video) return null;
 
     return (
-        <div className='flex justify-center items-center sm:w-[24vw] h-full '>
-            <Link href={`/scroll?cat=${item.name}`}>
-                <video src={video?.video?.files[1]?.url} autoPlay loop muted className='w-full h-[66vh] object-cover cursor-pointer' />
+        <div className='flex justify-center items-center w-20 sm:w-[24vw] h-full '>
+            <Link href={`/scroll?cat=${item.name}`} className='w-[100%] h-[100%]'>
+                <video src={video?.video?.files[1]?.url} autoPlay loop muted className='w-[100%] sm:w-full h-[66vh] object-cover cursor-pointer' />
                 <h1 className='font-semibold'>{selectedProduct.name}</h1>
             </Link>
         </div>
