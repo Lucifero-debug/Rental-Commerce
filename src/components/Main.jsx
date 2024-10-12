@@ -58,13 +58,13 @@ function Main({cat,product}) {
             <Auto auto={product} />
           </div>
         </div>
-        <div className="vid w-[full] h-[40vh]  sm:h-[85vh] md:mt-8 mt-4 md:flex md:flex-row flex flex-row">
+        <div className="vid w-[full] h-[38vh]  sm:h-[85vh] md:mt-8 mt-4 md:flex md:flex-row flex flex-row border-4 border-y-blue-600">
           <Explore />
         </div>
-        <div className="vid w-[full] h-[100vh] md:mt-14 sm:mt-16">
+        <div className="vid w-[full] h-[31vh] sm:h-[100vh] md:mt-14 mt-2 sm:mt-16 border-4 border-red-600">
           <video
             src='https://admin.manishmalhotra.in/videos/couture_processd.mp4'
-            className="w-full h-[100vh] object-cover"
+            className="w-full h-[33vh] sm:h-[100vh] sm:object-cover"
             controls
             autoPlay
             loop
