@@ -12,12 +12,13 @@ const getDeviceIdentifier = () => {
   return navigator.userAgent; // You can also use a custom logic here
 };
 
-const clearCookiesAndLogout = () => {
+const clearCookiesAndLogout = (setSeller) => {
   // Clear all cookies
   document.cookie.split(";").forEach(function (c) { 
     document.cookie = c.trim().split("=")[0] + "=;expires=" + new Date(0).toUTCString() + ";path=/"; 
   });
-  
+  setSeller(null)
+
   // Clear local storage
   localStorage.clear();
 
@@ -71,9 +72,9 @@ export default function Login() {
     
         if (storedDeviceId && storedDeviceId !== currentDeviceId) {
           // Device has changed; clear cookies and log out
-          clearCookiesAndLogout();
+          clearCookiesAndLogout(setSeller);
         }
-      }, []);
+      }, [setSeller]);
     
 
   const handleSubmit = async (e) => {
