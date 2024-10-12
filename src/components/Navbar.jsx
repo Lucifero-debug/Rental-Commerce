@@ -14,23 +14,16 @@ import Bridal from './dropdown/Bridal';
 import Legowns from './dropdown/Legowns';
 import Lehnga from './dropdown/Lehnga';
 import Cookies from "js-cookie";
+import { useAuth } from '@/context/userContext';
 
 function  Navbar()  {
   const [hoveredBrand, setHoveredBrand] = useState(null);
   const [scrolling, setScrolling] = useState(false);
-  const [sellers,setSellers]=useState()
   const {  counter } = useCartStore();
   const [searchTerm, setSearchTerm] = useState('')
 
-  useEffect(() => {
-    const userCookie = Cookies.get("user");
-    if(userCookie){
-      const user = JSON?.parse(userCookie);
-      setSellers(user)
-    }
-  }, []);
-//   const { seller } = useAuth();
-// console.log("suneo slelr",seller)
+
+  const { seller } = useAuth();
   
   const handleMouseEnter = (brand) => {
     setHoveredBrand(brand);
@@ -52,21 +45,21 @@ function  Navbar()  {
   const router = useRouter();
   
   const handleSearch=(e)=>{
-    if(sellers==null){
+    if(seller==null){
       router.push('/login')
     }else{
     router.push('/profile')
     }
     }
   
-    const isProfileDisabled = sellers == null;
+    const isProfileDisabled = seller == null;
 
     const navigateToList = (name) => {
     router.push(`/list?cat=${name}`);
   };
 
   const handleCart=()=>{
-    if (sellers==null) {
+    if (seller==null) {
       router.push('/login')
     }else{
       router.push('/cart')

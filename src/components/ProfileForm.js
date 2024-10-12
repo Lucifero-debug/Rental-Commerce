@@ -3,15 +3,19 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useWixClient } from "@/hooks/useWixClient"; // Ensure you have your custom hook
+import { useAuth } from '@/context/userContext';
 
 const ProfileForm = ({ profileData }) => {
   const router = useRouter();
   const wixClient = useWixClient(); // Ensure you have the Wix client
+  const { setSeller } = useAuth();
 
   const handleLogout = async () => {
     Cookies.remove("refreshToken");  
     Cookies.remove("accessToken");
     Cookies.remove("user");
+    localStorage.clear();
+setSeller(null)
 
     try {
       // Log the user out via Wix and redirect to login

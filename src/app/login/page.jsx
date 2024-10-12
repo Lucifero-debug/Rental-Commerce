@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { members } from "@wix/members";
+import { useAuth } from "@/context/userContext";
 
 const getDeviceIdentifier = () => {
   return navigator.userAgent; // You can also use a custom logic here
@@ -35,6 +36,7 @@ export default function Login() {
 
   const wixClient = useWixClient();
   const router = useRouter();
+  const { setSeller } = useAuth();
 
   const [mode, setMode] = useState(MODE.LOGIN);
   const [username, setUsername] = useState("");
@@ -132,6 +134,8 @@ export default function Login() {
             secure: true, // use 'secure' flag for HTTPS
             path: "/", // cookie valid for the whole domain
           });
+          setSeller(userData.member)
+          localStorage.setItem("user", JSON.stringify(userData.member));
           localStorage.setItem("deviceId", getDeviceIdentifier());
           router.push("/");
           break;
