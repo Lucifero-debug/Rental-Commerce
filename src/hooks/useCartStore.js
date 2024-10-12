@@ -5,7 +5,7 @@ import { WixClient } from "@/context/wixContext";
 export const useCartStore = create((set) => ({
   cart: [],
   isLoading: true,
-  counter:typeof window !== 'undefined'? parseInt(localStorage.getItem('cartCounter')) :0, // Initialize counter from local storage
+  counter: 0, // Initialize counter to 0
   getCart: async (wixClient) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
@@ -16,7 +16,7 @@ export const useCartStore = create((set) => ({
       });
       if (typeof window !== 'undefined') { // Check if in the browser
         localStorage.setItem('cartCounter', cart?.lineItems.length || 0); // Update local storage
-      }// Update local storage
+      }
     } catch (err) {
       set((prev) => ({ ...prev, isLoading: false }));
     }
@@ -67,3 +67,11 @@ export const useCartStore = create((set) => ({
     }
   },
 }));
+
+// Initialize counter from local storage on the client side
+if (typeof window !== 'undefined') {
+  const storedCounter = localStorage.getItem('cartCounter');
+  if (storedCounter) {
+    useCartStore.setState({ counter: parseInt(storedCounter) || 0 });
+  }
+}
