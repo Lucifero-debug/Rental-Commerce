@@ -43,7 +43,7 @@ function Reel({ product }) {
         const currentReel = product[currentProduct];
         console.log("curren whatsapp",currentReel)
         if (currentReel) {
-            const message = `Check out this product: ${currentReel.name}!\nlocalhost:3000/${currentReel.numericId}`;
+            const message = `Check out this product: ${currentReel.name}!\n${window.location.origin}/${currentReel.numericId}`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
