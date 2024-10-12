@@ -3,6 +3,7 @@ import { collections, products } from "@wix/stores";
 import { orders, currentCart } from "@wix/ecom";
 import { cookies } from "next/headers";
 import { members } from '@wix/members';
+import { checkout } from "@wix/ecom";
 
 export const wixClientServer = async () => {
   let refreshToken;
@@ -19,6 +20,7 @@ export const wixClientServer = async () => {
       orders,
       members,
       currentCart,
+      checkout
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID,
@@ -27,10 +29,6 @@ export const wixClientServer = async () => {
         accessToken: { value: "", expiresAt: 0 },
       },
     }),
-    // auth: ApiKeyStrategy({
-    //   siteId: process.env.NEXT_PUBLIC_WIX_APP_ID,
-    //   apiKey:process.env.NEXT_PUBLIC_WIX_API_ID,
-    // }),
   });
 
   return wixClient;

@@ -10,9 +10,9 @@ import Head from 'next/head';
 const Video = dynamic(() => import('@/components/Video'), { ssr: false });
 const Explore = dynamic(() => import('@/components/Explore'), { ssr: false });
 
+
 function Main({cat,product}) {
   
-
   return (
     <>
       <Head>
@@ -46,8 +46,8 @@ function Main({cat,product}) {
           <div className='h-full w-[34%] sm:w-[23%] flex justify-center items-center'>
             <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
           </div>
-          <div className='slider h-full sm:w-[77%] sm:flex grid grid-cols-2 sm:overflow-x-auto sm:overflow-y-hidden gap-10 '>
-            {cat.items.map((item) => (
+          <div className='slider h-full sm:w-[77%] sm:flex grid grid-cols-2 sm:overflow-x-auto sm:overflow-y-hidden gap-10'>        
+             {cat.items.map((item) => (
               <Video key={item._id} item={item} />
             ))}
           </div>

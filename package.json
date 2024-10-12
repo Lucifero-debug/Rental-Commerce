@@ -29,6 +29,7 @@
     "next-auth": "^4.24.8",
     "next-cloudinary": "^6.14.0",
     "qs": "^6.13.0",
+    "razorpay": "^2.9.4",
     "react": "^18",
     "react-confetti": "^6.1.0",
     "react-dom": "^18",

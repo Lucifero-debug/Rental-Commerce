@@ -1,11 +1,81 @@
-import React from 'react'
+'use client'
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
-function page() {
+const OrderPage = ({ params }) => {
+  const [order, setOrder] = useState(null);
+  const [error, setError] = useState(null);
+const orderId=params.id
+console.log("params",params)
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const response = await fetch(`/api/order?id=${orderId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch order');
+        }
+        const data = await response.json();
+        setOrder(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    fetchOrder();
+  }, [orderId]);
+
+  console.log("order is",order)
+
+  if (error) return <div>Error: {error}</div>;
+  if (!order) return <div>Loading...</div>;
+
   return (
-    <div>
-      <h1>order Page</h1>
+    <div className="flex flex-col h-[calc(100vh-180px)] items-center justify-center ">
+      <div className="shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] px-40 py-20">
+      <h1 className="text-xl">Order Details</h1>
+      <div className="mt-12 flex flex-col gap-6">
+        <div className="">
+          <span className="font-medium">Order Id: </span>
+          <span>{order._id}</span>
+        </div>
+        <div className="">
+          <span className="font-medium">Receiver Name: </span>
+          <span>
+            {order.billingInfo?.contactDetails?.firstName + " "}
+            {order.billingInfo?.contactDetails?.lastName}
+          </span>
+        </div>
+        <div className="">
+          <span className="font-medium">Receiver Email: </span>
+          <span>{order.buyerInfo?.email}</span>
+        </div>
+        <div className="">
+          <span className="font-medium">Price: </span>
+          <span>{order.priceSummary?.subtotal?.amount}</span>
+        </div>
+        <div className="">
+          <span className="font-medium">Payment Status: </span>
+          <span>{order.paymentStatus}</span>
+        </div>
+        <div className="">
+          <span className="font-medium">Order Status: </span>
+          <span>{order.status}</span>
+        </div>
+        <div className="">
+          <span className="font-medium">Delivery Address: </span>
+          <span>
+            {order.billingInfo?.address?.addressLine1 + " "}
+            {order.billingInfo?.address?.city}
+          </span>
+        </div>
+      </div>
+      </div>
+      <Link href="/" className="underline mt-6">
+        Have a problem? Contact us
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default OrderPage;

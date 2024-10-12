@@ -1,7 +1,8 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useWixClient } from "@/hooks/useWixClient";
-import { currentCart } from "@wix/ecom";
+import { useCartStore } from '@/hooks/useCartStore';
+import { checkout } from "@wix/ecom";
 
 const Page = () => {
   const [shippingDetails, setShippingDetails] = useState({
@@ -36,26 +37,121 @@ const Page = () => {
     });
   };
 
-  const handlePurchase = async(e) => {
+  const { cart, isLoading, removeItem,getCart } = useCartStore();
+
+  useEffect(()=>{
+    getCart(wixClient)
+  },[getCart,wixClient])
+
+
+  useEffect(() => {
+    // Load Razorpay script dynamically
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => {
+      console.log('Razorpay script loaded successfully');
+    };
+    document.body.appendChild(script);
+  }, []);
+
+
+  const handlePurchase = async (e) => {
     e.preventDefault();
+//    const order={
+//     channelInfo:{
+//       type:'WEB'
+//     },
+ 
+// billingInfo:{
+//   address:{
+//     addressLine1:shippingDetails.address,
+//     city:shippingDetails.city,
+//     country:'IN',
+//     postalCode:shippingDetails.zipCode,
+//   },
+//   contactDetails:{
+//     firstName:shippingDetails.fullName,
+//   }
+// },
+// buyerInfo:{
+//   email:shippingDetails.email
+// },
+// priceSummary:{
+//   subtotal:{
+//     amount:cart.subtotal.amount
+//   },
+// },
+// lineItems: cart.lineItems.map((item) => ({
+//   id: item._id || '', // Must be valid GUID or empty
+//   quantity: item.quantity,
+//   itemType: {
+//     preset: item.digitalFile ? 'DIGITAL' : 'PHYSICAL', // Adjust based on item type
+//   },
+//   price:{
+//     amount:item.price.amount
+//   },
+//   productName:{
+//     original:item.productName.original
+//   },
+//   quantity:item.quantity
+// })),
+//    }
+//     console.log("nohara",order)
+//     try {
+//       // Send order data to the API route
+//       const response = await fetch('/api/order', {
+//           method: 'POST',
+//           headers: {
+//               'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify(order),
+//       });
+
+//       if (!response.ok) {
+//           throw new Error('Failed to create order');
+//       }
+
+//       const createdOrder = await response.json();
+//       console.log('Order Created:', createdOrder);
+
+//       // Continue with payment processing (the rest of your payment handling code)
+
+//   } catch (error) {
+//       console.error('Error creating order:', error);
+//   }
     try {
-      const checkout =
-        await wixClient.currentCart.createCheckoutFromCurrentCart({
-          channelType: currentCart.ChannelType.WEB,
-        });
-
-      const { redirectSession } =
-        await wixClient.redirects.createRedirectSession({
-          ecomCheckout: { checkoutId: checkout.checkoutId },
-          callbacks: {
-            postFlowUrl: window.location.origin,
-            thankYouPageUrl: `${window.location.origin}/success`,
-          },
-        });
-
-      if (redirectSession?.fullUrl) {
-        window.location.href = redirectSession.fullUrl;
-      }
+      // Fetch order ID from the backend
+      const response = await fetch('/api/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amount: cart.subtotal.amount }), 
+      });
+      const { id: orderId } = await response.json();
+      // Razorpay payment options
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+        amount: cart.subtotal.amount * 100, 
+        currency: 'INR',
+        name: 'Your Store Name',
+        description: 'Purchase Description',
+        order_id: orderId,
+        handler: function (response) {
+          alert('Payment Successful!');
+          // Redirect to success page
+          window.location.href = `${window.location.origin}/success?orderId=${orderId}`;
+        },
+        prefill: {
+          name: shippingDetails.fullName,
+          email: shippingDetails.email,
+          contact: shippingDetails.mobileNumber,
+        },
+      };
+  
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
     } catch (err) {
       console.log(err);
     }
