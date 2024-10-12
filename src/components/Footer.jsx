@@ -70,12 +70,14 @@ function Footer() {
         </div>
       </div>
 
-      <div className="text-center mt-6 border-t border-gray-700 pt-4 flex justify-around">
-      <div className="sell">
-        <button className='bg-transparent' onClick={handleClick}><span><StorefrontIcon/></span>&nbsp;Become A Seller</button>
+      <div className="text-center mt-6 border-t border-gray-700 pt-4 grid grid-cols-4 md:flex justify-around">
+      <div className="sell flex flex-col md:flex-row items-center gap-2 cursor-pointer">
+      <div><StorefrontIcon/></div>
+        <button className='bg-transparent' onClick={handleClick}>Become A Seller</button>
       </div>
-      <div className="sell">
-        <button className='bg-transparent'><span><HelpIcon/></span>&nbsp;Help</button>
+      <div className="sell flex flex-col md:flex-row items-center gap-2 cursor-pointer">
+      <div><HelpIcon/></div>
+        <button className='bg-transparent'>Help</button>
       </div>
         <p className="text-sm">&copy; 2024 Flipkart Clone. All Rights Reserved.</p>
         <div className="card">card</div>
