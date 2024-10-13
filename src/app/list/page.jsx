@@ -28,7 +28,7 @@ const product=productsQuery.items
     <div className='mt-60 md:mt-48 lg:mt-36 min-h-[100vh] flex flex-col items-center w-[full] gap-7'>
       <h1 className='text-3xl'>COUTURE-{cat?.collection?.name}</h1>
       <Filter/>
-      <div className="prod grid grid-cols-3 md:grid md:grid-cols-4 gap-4 md:w-[80vw] w-full">
+      <div className="prod grid grid-cols-1 md:grid md:grid-cols-3 gap-4 md:w-[80vw] w-full">
       {product.map((item)=>(
         <Card key={item.slug} product={item}/>
       ))}

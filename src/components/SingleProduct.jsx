@@ -61,7 +61,7 @@ function SingleProduct({product}) {
     const handleScroll = () => {
       const carouselElement = carouselRef.current;
       const scrollTop = carouselElement.scrollTop;
-      const itemHeight =  213;// Adjust this height based on your image height
+      const itemHeight =  228;// Adjust this height based on your image height
   
       // Calculate the index based on the scroll position and the image height
       const newIndex = Math.floor(scrollTop / itemHeight);
@@ -146,7 +146,7 @@ console.log("sumit lodu",product.media.items)
 <Image src={product?.media?.items[currentIndex]?.image?.url} alt='' width={270} height={370}/>
     </div>
       {/* Vertical Image Carousel */}
-      <div className="relative w-full h-[300px] md:h-[700px] overflow-x-scroll overflow-y-hidden md:overflow-y-scroll md:overflow-x-hidden rounded-lg shadow-lg" onScroll={handleScroll}
+      <div className="relative w-full h-[600px] md:h-[700px] overflow-x-scroll overflow-y-hidden md:overflow-y-scroll md:overflow-x-hidden rounded-lg shadow-lg" onScroll={handleScroll}
           ref={carouselRef}>
         <div
           className="flex md:flex-col flex-row gap-5  w-full"
@@ -156,7 +156,7 @@ console.log("sumit lodu",product.media.items)
           {product?.media?.items
   ?.filter((variant) => variant.mediaType === 'image') // Only include items with mediaType 'image'
   ?.map((variant, index) => (
-    <div  key={index} className='w-screen md:w-full h-[300px] md:h-[350px] relative flex-shrink-0'>
+    <div  key={index} className='w-screen md:w-full h-[600px] md:h-[350px] relative flex-shrink-0'>
     <Image
       key={index}
       src={variant?.image?.url}

@@ -22,7 +22,7 @@ const Page = async({params}) => {
    
 
   return (
-    <div className="container mx-auto p-6 h-full overflow-y-auto bg-gray-50 md:mt-32 mt-60">
+    <div className="container mx-auto p-6 h-full overflow-y-auto bg-gray-50 md:mt-32 mt-60 overflow-x-hidden">
 
       {/* Main Content */}
     <SingleProduct product={products.items[0]}/>
@@ -30,11 +30,11 @@ const Page = async({params}) => {
 
       {/* Suggestions Section */}
       <div className="mt-10">
-        <Recent />
+      <Like liked={products.items[0].collectionIds[0]}/>
       </div>
 
       {/* Like Feature */}
-      <Like liked={products.items[0].collectionIds[0]}/>
+        <Recent />
     </div>
   );
 };

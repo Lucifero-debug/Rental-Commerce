@@ -1,5 +1,6 @@
 import { wixClientServer } from '@/lib/wixClientServer';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 const productData = {
@@ -49,15 +50,16 @@ async function Like({liked}) {
   return (
     <div className="mt-10">
     <h2 className="text-2xl font-semibold text-gray-800">You Might Also Like</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-      {productsQuery.items.map((suggestion, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-lg p-4">
-          <Image src={suggestion.media.mainMedia.image.url} alt={suggestion.name} className=" object-cover rounded-t-lg w-full h-auto md:h-[200px]" width={200} height={200}   // Use fill to make it responsive
-                objectFit="cover" />
-          <h3 className="text-lg font-semibold text-gray-800 mt-2">{suggestion.name}</h3>
-          <p className="text-blue-500 font-semibold">&#8377;{suggestion.price.price}</p>
-          <button className="mt-2 bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 transition duration-200">View</button>
+    <div className="grid grid-cols-1  md:grid-cols-4  gap-6 mt-6 ">
+      {productsQuery.items.slice(0, 4).map((suggestion, index) => (
+        <Link href={'/' + suggestion.numericId} key={index} className="bg-white rounded-lg shadow-lg relative h-[78vh] lg:h-[59vh] md:h-[40vh] md:w-[30vw]">
+        <div className=' w-full md:w-[22vw] lg:w-[23vw] md:h-[85%] h-[85%] relative'>
+          <Image src={suggestion.media.mainMedia.image.url} alt={suggestion.name} className=" object-cover rounded-t-lg w-full h-auto md:h-[200px]" layout='fill' />
+
         </div>
+          <h3 className="text-lg font-semibold text-gray-800 mt-2 ml-4">{suggestion.name}</h3>
+          <p className="text-blue-500 font-semibold ml-4">&#8377;{suggestion.price.price}</p>
+        </Link>
       ))}
     </div>
   </div>

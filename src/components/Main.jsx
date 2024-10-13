@@ -32,13 +32,13 @@ function Main({cat,product}) {
             <Curated cat={cat.items} />
           </div>
         </div>
-        <div className='big w-full sm:h-[50vh] md:h-[100vh] mt-8 flex justify-center'>
+        <div className='big relative w-full h-[63vh] sm:h-[50vh] md:h-[100vh] mt-8 flex justify-center border-4 border-red-600'>
           <Image
             src="https://cdn.pixelbin.io/v2/black-bread-289bfa/81ub5U/original/manish-cms_images/1712663653HOME_PAGE_revised-_1531x731_VOWS.webp"
-            width={1400}
-            height={1900}
+           
+           layout='fill'
             alt="Home Page"
-            className='shadow-[0px_0px_30px_5px_rgba(0,0,0,1)]'
+           
             priority // Add priority to important images
           />
         </div>
@@ -46,7 +46,7 @@ function Main({cat,product}) {
           <div className='h-[30vh] sm:h-full w-[67%] sm:w-[23%] flex justify-center items-center'>
             <h1 className='text-[#795a3a] font-normal text-4xl w-28 sm:w-12 whitespace-nowrap sm:whitespace-normal'>Experience More</h1>
           </div>
-          <div className='slider h-full md:h-[74vh] sm:w-[77%] w-full flex overflow-x-auto overflow-y-hidden gap-6 sm:gap-10'>        
+          <div className='slider h-full md:h-[74vh] sm:w-[77%] w-full flex overflow-x-scroll overflow-y-hidden gap-4 sm:gap-10'>        
              {cat.items.map((item) => (
               <Video key={item._id} item={item} />
             ))}
