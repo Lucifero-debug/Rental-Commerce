@@ -15,6 +15,7 @@ import Legowns from './dropdown/Legowns';
 import Lehnga from './dropdown/Lehnga';
 import Cookies from "js-cookie";
 import { useAuth } from '@/context/userContext';
+import MobileNav from './MobileNav';
 
 function  Navbar()  {
   const [hoveredBrand, setHoveredBrand] = useState(null);
@@ -81,11 +82,11 @@ function  Navbar()  {
   }, []);
 
   return (
-    <div className={`fixed left-0 w-full flex-wrap top-0 z-20 pb-5 ${scrolling ? 'bg-black' : 'bg-transparent'} ${scrolling ? 'text-white' : 'text-black'} transition-all duration-500 border-4 border-transparent`} onMouseEnter={()=>setScrolling(true)} onMouseLeave={()=>setScrolling(false)}>
+    <div className={`fixed left-0 w-full overflow-hidden flex-wrap top-0 z-20 pb-5 ${scrolling ? 'bg-black' : 'bg-transparent'} ${scrolling ? 'text-white' : 'text-black'} transition-all duration-500 border-4 border-transparent`} onMouseEnter={()=>setScrolling(true)} onMouseLeave={()=>setScrolling(false)}>
 
     <div className="flex flex-col mt-6 gap-6">
-      <div className="first flex flex-col md:flex-row justify-around items-center sm:gap-6 md:gap-3">
-        <div className="button w-full md:w-[20vw] flex gap-3 h-[6vh] justify-center md:justify-start">
+      <div className="first flex flex-col md:flex-row justify-around gap-4 items-center sm:gap-6 md:gap-3">
+        <div className="button w-full md:w-[20vw] md:flex gap-3 h-[6vh] justify-center md:justify-start hidden">
           <button className="bg-slate-600 text-white w-[40vw] md:w-[9vw] md:h-[5vh]">COUTURE</button>
           <button className="bg-slate-600 text-white w-[40vw] md:w-[9vw] md:h-[5vh]">DIFFUSE</button>
         </div>
@@ -95,11 +96,11 @@ function  Navbar()  {
         </Link>
 
         <div className="last w-full md:w-[29vw] flex justify-around items-center gap-3">
-          <div className="inp flex relative">
-          <div className="icon absolute left-2 top-1/2 transform -translate-y-1/2">
+          <div className="inp flex ">
+          {/* <div className="icon absolute left-2 top-1/2 transform -translate-y-1/2">
             <SearchIcon/>
-          </div>
-          <form onSubmit={handleSearchSubmit} className="w-[50vw] md:w-[15vw]">
+          </div> */}
+          {/* <form onSubmit={handleSearchSubmit} className="w-[50vw] md:w-[15vw]">
               <input
                 type="text"
                 value={searchTerm}
@@ -107,7 +108,8 @@ function  Navbar()  {
                 className={`${scrolling ? 'bg-[#D3D3D3]' : 'bg-[hsla(0,0%,100%,0.2)]'} w-full h-[4vh] pl-10 text-black`}
                 placeholder="Search..."
               />
-            </form>
+            </form> */}
+            <MobileNav/>
           </div>
           <div className="icon flex gap-5">
             <div className="cursor-pointer">

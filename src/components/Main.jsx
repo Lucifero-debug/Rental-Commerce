@@ -32,7 +32,7 @@ function Main({cat,product}) {
             <Curated cat={cat.items} />
           </div>
         </div>
-        <div className='big relative w-full h-[63vh] sm:h-[50vh] md:h-[100vh] mt-8 flex justify-center border-4 border-red-600'>
+        <div className='big relative w-full h-[63vh] sm:h-[50vh] md:h-[100vh] mt-8 flex justify-center'>
           <Image
             src="https://cdn.pixelbin.io/v2/black-bread-289bfa/81ub5U/original/manish-cms_images/1712663653HOME_PAGE_revised-_1531x731_VOWS.webp"
            
