@@ -261,13 +261,13 @@ console.log("sumit lodu",product.media.items)
         {/* Add to Cart Button */}
         <button
           onClick={addToCart}
-          className="bg-black hover:bg-blue-600 text-white py-2 px-4 rounded-md mt-6"
+          className="bg-black hover:bg-[#FFEA00] hover:text-black text-white py-2 px-4 rounded-md mt-6"
         >
           Add to Cart
         </button>
         <button
           onClick={handleShareToWhatsApp}
-          className="bg-black hover:bg-blue-600 text-white py-2 px-4 rounded-md mt-6"
+          className="bg-black hover:bg-[#FFEA00] hover:text-black text-white py-2 px-4 rounded-md mt-6"
         >
           Share To Whatsapp
         </button>
