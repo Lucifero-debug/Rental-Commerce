@@ -21,7 +21,7 @@ function  Navbar()  {
   const [hoveredBrand, setHoveredBrand] = useState(null);
   const [scrolling, setScrolling] = useState(false);
   const {  counter } = useCartStore();
-  const [searchTerm, setSearchTerm] = useState('')
+  const [theme, setTheme] = useState('light'); 
 
 
   const { seller } = useAuth();
@@ -30,16 +30,9 @@ function  Navbar()  {
     setHoveredBrand(brand);
   };
 
-  const handleSearchInputChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // Navigate to the products page with the search term
-    router.push(`/list?name=${searchTerm}`);
-  };
-  
+
+ 
   const handleMouseLeave = () => {
     setHoveredBrand(null);
   };
@@ -97,18 +90,6 @@ function  Navbar()  {
 
         <div className="last w-full md:w-[29vw] flex justify-around items-center gap-3">
           <div className="inp flex ">
-          {/* <div className="icon absolute left-2 top-1/2 transform -translate-y-1/2">
-            <SearchIcon/>
-          </div> */}
-          {/* <form onSubmit={handleSearchSubmit} className="w-[50vw] md:w-[15vw]">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={handleSearchInputChange}
-                className={`${scrolling ? 'bg-[#D3D3D3]' : 'bg-[hsla(0,0%,100%,0.2)]'} w-full h-[4vh] pl-10 text-black`}
-                placeholder="Search..."
-              />
-            </form> */}
             <MobileNav/>
           </div>
           <div className="icon flex gap-5">

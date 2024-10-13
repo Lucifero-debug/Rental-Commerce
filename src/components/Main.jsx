@@ -52,7 +52,7 @@ function Main({cat,product}) {
             ))}
           </div>
         </div>
-        <div className="auto w-full h-[28vh] sm:h-[40vh] xl:h-[78vh] mt-7">
+        <div className="auto w-full h-[58vh] sm:h-[40vh] xl:h-[78vh] mt-7">
           <div className="w-full h-full flex flex-col gap-9">
             <h1 className="text-2xl text-center">IN MM</h1>
             <Auto auto={product} />
@@ -61,10 +61,10 @@ function Main({cat,product}) {
         <div className="vid w-[full] h-[38vh]  sm:h-[85vh] md:mt-8 mt-4 md:flex md:flex-row flex flex-row">
           <Explore />
         </div>
-        <div className="vid w-[full] h-[31vh] sm:h-[100vh] md:mt-14 mt-2 sm:mt-16">
+        <div className="vid w-[full] h-[59vh] sm:h-[100vh] md:mt-14 mt-2 sm:mt-16">
           <video
             src='https://admin.manishmalhotra.in/videos/couture_processd.mp4'
-            className="w-full h-[33vh] sm:h-[100vh] sm:object-cover"
+            className="w-full h-[59vh] sm:h-[100vh] object-cover sm:object-cover"
             controls
             autoPlay
             loop

@@ -23,7 +23,7 @@ async function Home() {
   const collectionId = collectionsQuery.items[0]._id;
   const productsQuery = await wixClient.products.queryProducts()
     .eq("collectionIds", collectionId)
-    .limit(4)
+    .limit(7)
     .find();
 
   const product = productsQuery.items;
