@@ -50,7 +50,7 @@ async function Like({liked}) {
   return (
     <div className="mt-10">
     <h2 className="text-2xl font-semibold text-gray-800">You Might Also Like</h2>
-    <div className="grid grid-cols-1  md:grid-cols-4  gap-6 mt-6 ">
+    <div className="grid grid-cols-1  md:grid-cols-4  gap-7 mt-6 ">
       {productsQuery.items.slice(0, 4).map((suggestion, index) => (
         <Link href={'/' + suggestion.numericId} key={index} className="bg-white rounded-lg shadow-lg relative h-[78vh] lg:h-[59vh] md:h-[40vh] md:w-[30vw]">
         <div className=' w-full md:w-[22vw] lg:w-[23vw] md:h-[85%] h-[85%] relative'>

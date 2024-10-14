@@ -98,6 +98,7 @@ export default function Login() {
             password,
             profile: { nickname: username }, // Removed address and phone
           });
+          break;
         case MODE.RESET_PASSWORD:
           response = await wixClient.auth.sendPasswordResetEmail(
             email,
