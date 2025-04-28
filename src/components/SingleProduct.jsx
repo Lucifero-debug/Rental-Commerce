@@ -124,7 +124,7 @@ console.log("sumit lodu",product.media.items)
          }
          const productId=product._id
          const variantId=selectedVariant._id
-  
+  console.log("quantlity",quantity)
          addItem(wixClient, productId, variantId, quantity)
          console.log("product added successfully")
        }

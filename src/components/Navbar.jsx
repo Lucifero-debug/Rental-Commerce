@@ -27,14 +27,14 @@ function  Navbar()  {
   const { seller } = useAuth();
   
   const handleMouseEnter = (brand) => {
-    setHoveredBrand(brand);
+    // setHoveredBrand(brand);
   };
 
 
 
  
   const handleMouseLeave = () => {
-    setHoveredBrand(null);
+    // setHoveredBrand(null);
   };
   const router = useRouter();
   

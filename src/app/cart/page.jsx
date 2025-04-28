@@ -17,7 +17,9 @@ const CartModal = () => {
     getCart(wixClient)
   },[getCart,wixClient])
 
-  console.log("cartyr",cart)
+  console.log("discriminator",cart)
+  
+
 
   return (
     <div className="sm:w-full sm:h-full mt-52 sm:mt-52 md:mt-40 flex justify-center">

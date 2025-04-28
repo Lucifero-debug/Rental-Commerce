@@ -10,8 +10,9 @@ export async function POST(req, res) {
   try {
     const { amount, currency = 'INR' } = await req.json();
 
+     console.log("amount",amount)
     const options = {
-      amount: 1 * 100, // amount in paise
+      amount: amount * 100, // amount in paise
       currency,
       receipt: `receipt_order_${new Date().getTime()}`,
     };
